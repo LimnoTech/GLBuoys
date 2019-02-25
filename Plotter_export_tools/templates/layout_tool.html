@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+
+	<!-- Google Tag Manager -->
+	    <script>
+            isActiveTracking = true;   // set to "true" to activate GTM
+            dataLayer = [];
+        </script>
+
+        {% block GTM_script %}{% endblock %} 
+
+        {% load static %}
+
+        <!-- Handle GET request -->
+        <script>
+            objGET = {{ req_data|safe }};
+        </script>
+	
+        <!--GLOS Plotting Tool#} -->
+        <title>
+            {{title}}
+        </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+	    <link rel="shortcut icon" type="image/x-icon" href="https://www.glos.us/wp-content/themes/optimizer-child/favicon.ico">
+	    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data-2012-2022.min.js"></script>-->
+
+        <!--<script src="{% static 'Buoy_tool/scripts/moment.js' %}"></script>-->
+
+        <!-- Boostrap 3.3.7 -->
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
+
+        <!-- Shared script for plotter/export tools -->
+	    <script src="{% static 'Plotter_export_tools/scripts/shared.js' %}"></script>
+
+        <!-- Scripts -->
+        {% block scripts %}
+        
+        {% endblock %}
+    
+    </head>
+
+
+    <body>
+
+    <!-- Google Tag Manager (noscript) -->
+        {% block GTM_iframe %}        
+        {% endblock %}
+	<!-- End Google Tag Manager (noscript) -->	
+
+    <header class="w3-container w3-top w3-white">
+
+            <div class="w3-display-container" style="height: 50px;text-align:center;">
+                <a href="https://glos.us" onclick="dataLayer.push({'event':'glbuoysEvent','glbuoysCategory':'logo','glbuoysLabel':'http://glos.us','glbuoysAction':'click_internal_url'})" target="_blank">
+                    <img class="headerLogos" src="{% static 'Plotter_export_tools/img/glos_logo.png' %}"/>
+                </a>
+
+                <!--GLOS Data Plotting Tool-->
+
+                <h3 id="h3-title" style="padding-top:15px;">{{title}}</h3>
+
+		    </div>
+
+            {% block staticHeader %}
+            {% endblock %}
+						
+    </header>
+
+    {% block content %}{% endblock %}
+
+
+	</body>
+</html>
